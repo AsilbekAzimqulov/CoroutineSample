@@ -72,7 +72,6 @@ class AddUserScreen : BaseFragment(R.layout.screen_add_user) {
     private fun addUser() {
         if (name.checkField("required field")) {
             val userName = name.text.toString()
-            activity?.hideKeyboard(name)
             mainVM.addData(userName, mainVM.imageUrl)
             mainVM.scrollPager()
         }
@@ -171,10 +170,5 @@ class AddUserScreen : BaseFragment(R.layout.screen_add_user) {
 //                data?.extras?.get("data")
             }
         }
-    }
-
-    override fun onPause() {
-        super.onPause()
-        activity?.hideKeyboard(name)
     }
 }
