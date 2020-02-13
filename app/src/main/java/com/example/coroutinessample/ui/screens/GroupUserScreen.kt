@@ -1,5 +1,6 @@
 package com.example.coroutinessample.ui.screens
 
+import android.view.View
 import androidx.lifecycle.Observer
 import com.example.coroutinessample.R
 import com.example.coroutinessample.room.entity.UserEntity
@@ -30,6 +31,7 @@ class GroupUserScreen : BaseFragment(R.layout.screen_group_user) {
         adapter = UserAdapter()
         recyclerView.adapter = adapter
         mainVM.groupData.observe(this, groupObserver)
+        mainVM.goneFAB.observe(this, visibleGone)
         mainVM.loadGroupData()
     }
 
@@ -40,5 +42,9 @@ class GroupUserScreen : BaseFragment(R.layout.screen_group_user) {
 
     private val groupObserver = Observer<List<UserEntity>> {
         adapter.submitList(it)
+    }
+    private val visibleGone = Observer<Boolean> {
+        if (it) addGroupButton.visibility = View.GONE
+        else addGroupButton.visibility = View.VISIBLE
     }
 }

@@ -8,7 +8,7 @@ object Database {
 
      lateinit var instance: AppDatabase
 
-    private fun create(context: Context, @Suppress("SameParameterValue") memoryOnly: Boolean): AppDatabase {
+    private fun create(context: Context): AppDatabase {
         val b: RoomDatabase.Builder<AppDatabase> =
             Room.databaseBuilder(
                 context.applicationContext, AppDatabase::class.java,
@@ -20,7 +20,7 @@ object Database {
     private const val DB_NAME: String = "test.db"
     @Synchronized
     fun init(context: Context) {
-        instance = create(context, false)
+        instance = create(context)
     }
 
 }

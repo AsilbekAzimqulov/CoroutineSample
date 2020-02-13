@@ -1,6 +1,5 @@
 package com.example.coroutinessample.ui.adapters
 
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,7 +17,6 @@ class UserAdapter :
     ListAdapter<UserEntity, UserAdapter.VH>(DIffUtil()) {
 
     var removeListener: ((UserEntity) -> Unit)? = null
-    var clickListener: ((UserEntity) -> Unit)? = null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
         return VH(LayoutInflater.from(parent.context).inflate(R.layout.item_user, parent, false))
     }
@@ -31,10 +29,8 @@ class UserAdapter :
     inner class VH(itemView: View) : RecyclerView.ViewHolder(itemView) {
         init {
             itemView.delete.setOnClickListener {
-                removeListener?.invoke(getItem(adapterPosition))
-            }
-            itemView.setOnClickListener {
-                clickListener?.invoke(getItem(adapterPosition))
+                if (adapterPosition != RecyclerView.NO_POSITION)
+                    removeListener?.invoke(getItem(adapterPosition))
             }
         }
 

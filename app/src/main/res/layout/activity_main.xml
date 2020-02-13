@@ -9,11 +9,16 @@
 
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
+        app:title="Sample"
+        app:titleTextColor="@color/colorWhite"
         android:layout_height="?actionBarSize"
         android:background="@color/colorPrimary" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
+        app:tabIndicatorColor="@color/colorWhite"
+        app:tabTextColor="@color/colorWhite"
+        android:background="@color/colorPrimary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

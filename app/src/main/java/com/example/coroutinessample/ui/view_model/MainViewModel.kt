@@ -21,12 +21,16 @@ class MainViewModel : ViewModel() {
 
     val scrollPager = CustomLiveData<Boolean>()
     val clearInfoInUI = CustomLiveData<Boolean>()
+    val goneFAB = CustomLiveData<Boolean>()
+    var imageUrl = ""
 
     fun loadData() {
         viewModelScope.launch(Dispatchers.IO) {
             interactor.getAllUser().collect {
                 Log.d("MRX", it.size.toString())
                 _allData.postValue(it)
+                goneFAB.postValue(it.none { !it.isGroup })
+
             }
         }
     }
