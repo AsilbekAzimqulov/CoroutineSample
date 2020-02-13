@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">CoroutinesSample</string>
+    <string name="all_user">All User</string>
+    <string name="group">Group</string>
+    <string name="add_user">Add User</string>
+    <string name="take_camera">Take camera</string>
+    <string name="select_camera">Select gallery</string>
+    <string name="name">Name</string>
+</resources>
